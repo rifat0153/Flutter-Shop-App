@@ -44,4 +44,8 @@ class ProductsController extends GetxController {
   void addProduct(Product product) {
     _items.add(product);
   }
+
+  Product findById(String id) {
+    return _items.firstWhere((p) => p.id == id);
+  }
 }
