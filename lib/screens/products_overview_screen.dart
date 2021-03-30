@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shop_app/models/product.dart';
 import 'package:shop_app/widgets/product_item.dart';
 
@@ -58,6 +59,11 @@ class ProductsOverview extends StatelessWidget {
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.toNamed('/home');
+        },
       ),
     );
   }
