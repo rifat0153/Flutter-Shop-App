@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shop_app/controllers/products_get.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/providers/products_get.dart';
+import './providers/products_provider.dart';
 import 'package:shop_app/screens/product_detail_screen.dart';
 import 'package:shop_app/screens/products_overview_screen.dart';
 
@@ -14,21 +16,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
-        accentColor: Colors.deepOrange,
-        fontFamily: 'Lato',
+    return ChangeNotifierProvider(
+      create: (ctx) => Products(),
+      child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.purple,
+          accentColor: Colors.deepOrange,
+          fontFamily: 'Lato',
+        ),
+        home: ProductsOverview(),
+        getPages: [
+          GetPage(name: '/home', page: () => HomePage()),
+          GetPage(
+              name: ProductDetailScreen.routeName,
+              page: () => ProductDetailScreen()),
+        ],
       ),
-      home: ProductsOverview(),
-      getPages: [
-        GetPage(name: '/home', page: () => HomePage()),
-        GetPage(
-            name: ProductDetailScreen.routeName,
-            page: () => ProductDetailScreen()),
-      ],
     );
   }
 }
