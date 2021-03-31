@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (ctx) => Products(),
-      child: GetMaterialApp(
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
@@ -27,12 +27,10 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Lato',
         ),
         home: ProductsOverview(),
-        getPages: [
-          GetPage(name: '/home', page: () => HomePage()),
-          GetPage(
-              name: ProductDetailScreen.routeName,
-              page: () => ProductDetailScreen()),
-        ],
+        routes: {
+          ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
+          '/home': (ctx) => HomePage(),
+        },
       ),
     );
   }

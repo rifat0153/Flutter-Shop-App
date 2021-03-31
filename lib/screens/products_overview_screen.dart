@@ -18,7 +18,7 @@ class ProductsOverview extends StatelessWidget {
       body: ProductsGrid(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.toNamed('/home');
+          Navigator.of(context).pushNamed('/home');
         },
       ),
     );
