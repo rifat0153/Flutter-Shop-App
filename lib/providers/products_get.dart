@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:shop_app/models/product.dart';
+import 'package:shop_app/providers/product.dart';
 
 class ProductsController extends GetxController {
   List<Product> _items = [
